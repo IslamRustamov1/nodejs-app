@@ -19,6 +19,7 @@ app.use(
 app.use(bodyParser.json());
 app.use(cors());
 
+// This is for Heroku
 const dbb = process.env.MONGODB;
 
 const connectDB = async () => {
@@ -34,7 +35,7 @@ const connectDB = async () => {
   }
 };
 
-// Connect to Mongoose and set connection variable
+// This is for localhost
 mongoose.connect(process.env.MONGODB || 'mongodb://localhost/nodejs-app', {
   useNewUrlParser: true
 });
