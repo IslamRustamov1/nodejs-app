@@ -19,6 +19,21 @@ app.use(
 app.use(bodyParser.json());
 app.use(cors());
 
+const dbb = process.env.MONGODB;
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(dbb, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    });
+    console.log('MongoDB is Connected...');
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
+
 // Connect to Mongoose and set connection variable
 mongoose.connect(process.env.MONGODB || 'mongodb://localhost/nodejs-app', {
   useNewUrlParser: true
