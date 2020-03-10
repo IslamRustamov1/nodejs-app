@@ -19,7 +19,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost/nodejs-app', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/nodejs-app', {
+  useNewUrlParser: true
+});
 mongoose.connection.on('error', error => console.log(error));
 
 const db = mongoose.connection;
