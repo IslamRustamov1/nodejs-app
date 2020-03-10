@@ -37,6 +37,12 @@ console.log(port);
 const routes = require('./routes/api-routes');
 const secureRoute = require('./routes/secure-routes');
 
+app.get('/', function(req, res) {
+  res.send(
+    '.../api/signup, .../api/login, .../api/user, .../api/user/todos, .../api/user/todos/1234567/comments'
+  );
+});
+
 app.use('/api', routes);
 app.use(
   '/api/user',
